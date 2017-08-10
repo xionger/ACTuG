@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<div class="container" id="contact">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<div class="panel panel-default">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading">{{ oligo.gene }}</div>
+			  <div class="panel-body">
+				{% for seq in oligo.sequences %}
+				<div class="panel panel-default container-fluid">
+					<div class="panel-heading row">
+						<div class="col-md-10">
+							<h5 class="panel-title">5'-{{ seq.sequence }}-3'</h5>
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-info pull-right">{{ seq.articleId|length }}
+							 {% if seq.articleId|length <= 1 %}
+							   citation
+							 {% else %}
+							  citations
+							 {% endif %}
+							 </button>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-4">
+							<ul class="list-inline">
+								<li>Accession No.: </li>
+								<li>{{seq.accessionId}}</li>
+							</ul>		    
+						</div>
+						<div class="col-md-4">
+							<ul class="list-inline">
+								<li>Type: </li>
+								<li>{{seq.type}}</li>
+							</ul>
+						</div>
+						<div class="col-md-4">
+							<ul class="list-inline">
+								<li>Species:</li>
+								<li>{{seq.species}}</li>
+							</ul>		    
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

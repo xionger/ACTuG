@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block body %}
+<div class="container" id="suggest">
+		<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+	<form class="well form-horizontal" action="{{ url_for('contact') }}" method="post"  id="contact_form">
+		<fieldset>
+ 		 	<legend >Please Suggest a RNAi Sequence!</legend>
+		
+			<!-- Text input-->  
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="name">{{ form.name.label }}</label>  
+			  <div class="col-md-8 inputGroupContainer">
+			  <div class="input-group">
+			  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			  <input  name="first_name" placeholder="Your Name (optional)" class="form-control"  type="text">
+
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="email">{{ form.email.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+			  <input name="email" placeholder="E-Mail Address (optional)" class="form-control"  type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="gene">{{ form.gene.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+			  <input name="email" placeholder="Gene symbol (required)" class="form-control"  type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="sequence">{{ form.sequence.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal"></i></span>
+			  <input name="sequence" placeholder="5'-ACTuG-3' (required)" class="form-control"  type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="accession">{{ form.accession.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+			  <input name="accession" placeholder="NM_123456789.1 (optional)" class="form-control"  type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- radio checks -->
+ 			<div class="form-group">
+                <label class="col-md-3 control-label" for="rnai_type">{{ form.rnai_type.label }}</label>
+                <div class="col-md-8">
+                    <div class="radio col-md-3">
+                        <label>
+                            <input type="radio" name="rnai_type" value="siRNA" /> siRNA
+                        </label>
+                    </div>
+                    <div class="radio col-md-3">
+                        <label>
+                            <input type="radio" name="rnai_type" value="shRNA" /> shRNA
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="pubid">{{ form.pubid.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
+			  <input name="pubid" placeholder="12345678 (required)" class="form-control"  type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-3 control-label" for="fulltext">{{ form.fulltext.label }}</label>  
+			    <div class="col-md-8 inputGroupContainer">
+			    <div class="input-group">
+			        <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+			  <input name="fulltext" placeholder="http://fulltext link (optional)" class="form-control" type="text">
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Success message -->
+			<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thank you! We will update the data shortly.</div>
+
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-5 control-label"></label>
+			  <div class="col-md-4">
+			    <button type="submit" class="btn btn-primary" >Submit <span class="glyphicon glyphicon-send"></span></button>
+			  </div>
+			</div>
+
+  		</fieldset>
+	</form>
+	</div>
+	</div>
+</div>
+
+{% endblock %}

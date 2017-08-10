@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<div class="container" id="contact">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">
+					<div><a href="{{article[0].link}}">{{ article[0].title }}</a></div>
+					<div>
+					In <span id='journal'>{{ article[0].journal }}</span> ({{ article[0].year }}) by {{ article[0].authors }}.	
+					</div>
+				</div>
+
+				<div class="panel-body">
+				{% for oligo in article[0].oligos %}
+				<div class="panel panel-default">
+					<div class="panel-heading">{{ oligo.gene }}</div>
+					<div class="panel-body">
+						<ul>
+						{% for seq in oligo.sequences %}
+							<li>
+								<div class="col-md-12">
+									<ul class="list-inline">
+										<li>5'-{{ seq.sequence }}-3'</li>
+										{% if seq.type=='siRNA' %}
+											<li> (siRNA)</li>
+										{% elif seq.type=='shRNA' %}
+											<li> (shRNA)</li>
+										{% endif %}
+									</ul>		    
+								</div>							
+							</li>
+						{% endfor %}
+						</ul>
+						
+					</div>
+				</div>
+				{% endfor %}
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
