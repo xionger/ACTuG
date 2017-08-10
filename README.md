@@ -1,2 +1,2 @@
 # ACTuG
-A RNAi oligos search engine
+An RNAi oligos search engine
