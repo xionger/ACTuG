@@ -37,3 +37,15 @@ ASSETS_FOLDER = "style"
 MONGO_HOST='localhost'
 MONGO_PORT=27017
 MONGO_DBNAME='actugdb'
+
+#EMAIL SERVER
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+#app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+#app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+MAIL_USERNAME = "user@gmail.com"
+MAIL_PASSWORD = "user_password"
+
+# administrator list
+ADMINS = ['admin@gmail.com']

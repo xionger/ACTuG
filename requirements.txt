@@ -1,9 +1,10 @@
-click==6.6
-Flask==0.11.1
+click==6.7
+Flask==0.12.2
 Flask-PyMongo==0.5.1
 flask-bootstrap==3.3.7.1
+flask-mail==0.9.1
 flask-wtf==0.14.2
 itsdangerous==0.24
 MarkupSafe==0.23
 pymongo==3.4.0
-Werkzeug==0.11.11
+Werkzeug==0.12.2

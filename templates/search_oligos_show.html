@@ -17,48 +17,56 @@
 <div class="container" id="contact">
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading"><a href="/oligos/{{oligo.gene}}">{{ oligo.gene }}</a>: 5'-{{ oligo.sequence }}-3'</div>
+
+		{% for search in searches %}
+		<div class="panel panel-default">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">{{ search.gene.symbol }}{{ search.gene.names_str }}: {{ search.gene.description }}</div>
+		  <div class="panel-body">
+			{% for seq in search.match_oligos %}
+			<div class="panel panel-default container-fluid">
+				<div class="panel-heading row">
+					<div class="col-md-10">
+						<h5 class="panel-title">5'-{{ seq.sequence }}-3'</h5>
+					</div>
+					<div class="col-md-2">
+						<a href="/oligo/{{seq.id}}">
+							<button class="btn btn-info pull-right">{{ seq.cite_list|length }}
+							 {% if seq.cite_list|length <= 1 %}
+							   citation
+							 {% else %}
+							  citations
+							 {% endif %}
+							 </button>
+						</a>
+					</div>
+				</div>
 				<div class="panel-body">
 					<div class="col-md-4">
 						<ul class="list-inline">
 							<li>Accession No.: </li>
-							<li>{{oligo.accessionId}}</li>
+							<li>{{seq.accessionId}}</li>
 						</ul>		    
 					</div>
 					<div class="col-md-4">
 						<ul class="list-inline">
 							<li>Type: </li>
-							<li>{{oligo.type}}</li>
+							<li>{{seq.type}}</li>
 						</ul>
 					</div>
 					<div class="col-md-4">
 						<ul class="list-inline">
 							<li>Species:</li>
-							<li>{{oligo.species}}</li>
+							<li>{{seq.species}}</li>
 						</ul>		    
 					</div>
 				</div>
 			</div>
-
-			<div class="panel panel-default">
-				<div class="panel-heading">The oligo was cited in:</div>
-
-			{% for article in article_list %}
-			<div class="panel-body">
-				<div class="col-md-10">
-					<div><a href="{{article.link}}" target="_blank">{{ article.title }}</a></div>
-					<div>
-						In <span id='journal'>{{ article.journal }}</span> ({{ article.year }}) by {{ article.authors }}.	
-					</div>
-				</div>
-				<div class="col-md-2">
-					<a href="/articles/{{article.pubid}}"><button class="btn btn-info pull-right">More Oligos</button></a>
-				</div>
-			</div>
 			{% endfor %}
+		  </div>
+		</div>
+		{% endfor %}
 
-			</div>
 
 		</div>
 	</div>

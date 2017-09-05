@@ -18,38 +18,46 @@
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2">
 			<div class="panel panel-default">
-				<!-- Default panel contents -->
-				<div class="panel-heading">
-					<div><a href="{{article.link}}" target="_blank">{{ article.title }}</a></div>
-					<div>
-					In <span id='journal'>{{ article.journal }}</span> ({{ article.year }}) by {{ article.authors }}.	
+			  <!-- Default panel contents -->
+			  <div class="panel-heading">{{ gene_info.symbol }}{{gene_info.names_str}}: {{gene_info.description}}</div>
+			  <div class="panel-body">
+				{% for seq in oligos %}
+				<div class="panel panel-default container-fluid">
+					<div class="panel-heading row">
+						<div class="col-md-10">
+							<h5 class="panel-title">5'-{{ seq.sequence }}-3'</h5>
+						</div>
+						<div class="col-md-2">
+							<a href="/oligo/{{seq.id}}">
+								<button class="btn btn-info pull-right">{{ seq.cite_list|length }}
+								 {% if seq.cite_list|length <= 1 %}
+								   citation
+								 {% else %}
+								  citations
+								 {% endif %}
+								 </button>
+							</a>
+						</div>
 					</div>
-				</div>
-
-				<div class="panel-body">
-				{% for oligo in article.oligos %}
-				<div class="panel panel-default">
-					<div class="panel-heading"><a href="/oligos/{{oligo.gene}}">{{ oligo.gene }}</a>: 5'-{{ oligo.sequence }}-3'</div>
 					<div class="panel-body">
 						<div class="col-md-4">
 							<ul class="list-inline">
 								<li>Accession No.: </li>
-								<li>{{oligo.accessionId[0]}}</li>
+								<li>{{seq.accessionId}}</li>
 							</ul>		    
 						</div>
 						<div class="col-md-4">
 							<ul class="list-inline">
 								<li>Type: </li>
-								<li>{{oligo.type[0]}}</li>
+								<li>{{seq.type}}</li>
 							</ul>
 						</div>
 						<div class="col-md-4">
 							<ul class="list-inline">
 								<li>Species:</li>
-								<li>{{oligo.species[0]}}</li>
+								<li>{{seq.species}}</li>
 							</ul>		    
 						</div>
-						
 					</div>
 				</div>
 				{% endfor %}
