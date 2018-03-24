@@ -6,7 +6,7 @@ A MongoDB backed web application built with Flask, Jinja2, javascript, HTML5, CS
 ## Installation
 1. Install [MongoDB](https://docs.mongodb.com/manual/installation/)
 
-2. $ pip install requirements.txt
+2. Install required libraries with pip: $ pip install requirements.txt
 
 ## License
 The content of this repository is licensed under [MIT LICENSE](LICENSE.MD).
